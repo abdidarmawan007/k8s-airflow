@@ -90,7 +90,7 @@ helm upgrade --install airflow apache-airflow/airflow --namespace airflow \
 ```
 
 
-### uninstall airflow
+### Uninstall airflow
 ```
 helm delete airflow --namespace airflow
 ```
