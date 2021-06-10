@@ -1,4 +1,6 @@
-### Set repo helm airflow
+## Install Official Airflow chart using helm 3
+
+### Add repo airflow
 ```
 helm repo add apache-airflow https://airflow.apache.org
 helm repo update
