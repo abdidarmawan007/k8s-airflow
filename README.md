@@ -18,7 +18,10 @@ kubectl create namespace airflow
 ```
 
 ### Install airflow
-##### Airflow 2.0 allows users to run multiple schedulers. This feature is only recommended for PostgreSQL
+#### Airflow 2.0 allows users to run multiple schedulers. This feature is only recommended for PostgreSQL
+- `executor = Airflow executor`
+- `flower.enabled = Enable Flower (web based tool for monitoring and administrating Celery)`
+- `workers.terminationGracePeriodSeconds = Grace period for tasks to finish after SIGTERM is sent from Kubernetes.`
 ```
 helm install airflow apache-airflow/airflow --namespace airflow \
 --set airflowVersion=2.0.2 \
