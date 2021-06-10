@@ -31,7 +31,7 @@ helm install airflow apache-airflow/airflow --namespace airflow \
 --set pgbouncer.maxClientConn=200 \
 --set pgbouncer.metadataPoolSize=20 \
 --set pgbouncer.resultBackendPoolSize=10 \
---set workers.replicas=3 \
+--set workers.replicas=4 \
 --set workers.persistence.enabled=True \
 --set workers.terminationGracePeriodSeconds=600 \
 --set workers.persistence.size=80Gi
@@ -77,7 +77,7 @@ helm upgrade --install airflow apache-airflow/airflow --namespace airflow \
 --set pgbouncer.maxClientConn=200 \
 --set pgbouncer.metadataPoolSize=20 \
 --set pgbouncer.resultBackendPoolSize=10 \
---set workers.replicas=3 \
+--set workers.replicas=4 \
 --set workers.persistence.enabled=True \
 --set workers.terminationGracePeriodSeconds=600 \
 --set workers.persistence.size=80Gi \
