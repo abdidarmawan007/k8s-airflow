@@ -1,4 +1,4 @@
-## Install Official Airflow chart using helm 3 "Google Kubernetes Engine (GKE)"
+## Install Official Airflow chart using helm 3 "Google Kubernetes Engine"
 
 ### Add repo airflow
 ```
