@@ -73,9 +73,9 @@ docker push asia.gcr.io/zeus-cloud/zeus-airflow:0.6
 
 #### Update airflow with new docker image and dag with auto rollback
 - `--atomic = if set, upgrade process rolls back changes made in case of failed upgrade`
-- `--timeout = deployment timeout if more than 120s`
+- `--timeout = deployment timeout if more than 180s`
 ```
-helm upgrade --install --atomic --timeout 120s airflow apache-airflow/airflow --namespace airflow \
+helm upgrade --install --atomic --timeout 180s airflow apache-airflow/airflow --namespace airflow \
 --set airflowVersion=2.0.2 \
 --set executor=CeleryExecutor \
 --set defaultAirflowTag=2.0.2 \
