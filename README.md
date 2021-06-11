@@ -71,7 +71,7 @@ docker tag zeus-airflow asia.gcr.io/zeus-cloud/zeus-airflow:0.6
 docker push asia.gcr.io/zeus-cloud/zeus-airflow:0.6
 ```
 
-#### Update airflow with new docker image and dag
+#### Update airflow with new docker image and dag with auto rollback
 - `--atomic = if set, upgrade process rolls back changes made in case of failed upgrade`
 - `--timeout = deployment timeout if more than 120s`
 ```
@@ -98,15 +98,18 @@ helm upgrade --install --atomic --timeout 120s airflow apache-airflow/airflow --
 ```
 
 
-#### Rollback
+#### Manual Rollback
 ```
 helm history airflow --namespace airflow
-REVISION	UPDATED                 	STATUS         	CHART        	APP VERSION	DESCRIPTION      
-1       	Fri Jun 11 11:58:19 2021	superseded     	airflow-1.0.0	2.0.2      	Install complete 
-2       	Fri Jun 11 12:05:28 2021	deployed       	airflow-1.0.0	2.0.2      	Upgrade complete 
-3       	Fri Jun 11 12:09:09 2021	deployed	      airflow-1.0.0	2.0.2      	Upgrade complete
+REVISION	UPDATED                 	STATUS          	CHART        	APP VERSION	DESCRIPTION                                                  
+1       	Fri Jun 11 11:58:19 2021	superseded      	airflow-1.0.0	2.0.2      	Install complete                                             
+2       	Fri Jun 11 12:05:28 2021	superseded      	airflow-1.0.0	2.0.2      	Upgrade complete                                             
+3       	Fri Jun 11 12:09:09 2021	pending-upgrade 	airflow-1.0.0	2.0.2      	Preparing upgrade                                            
+4       	Fri Jun 11 12:15:30 2021	deployed        	airflow-1.0.0	2.0.2      	Rollback to 2                                                
+5       	Fri Jun 11 12:22:32 2021	failed          	airflow-1.0.0	2.0.2      	Upgrade "airflow" failed: timed out waiting for the condition
 
-helm rollback airflow 2 --namespace airflow
+
+helm rollback airflow 4 --namespace airflow
 Rollback was a success! Happy Helming!
 ```
 
