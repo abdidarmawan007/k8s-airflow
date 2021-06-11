@@ -44,7 +44,7 @@ helm install airflow apache-airflow/airflow --namespace airflow \
 --set workers.persistence.size=80Gi
 ```
 
-### Login to UI airflow andflower
+### Login to UI airflow and flower (if you use ClusterIP via port-forward) user: admin pass:admin
 ```
 kubectl port-forward svc/airflow-webserver 8080:8080 --namespace airflow
 kubectl port-forward svc/airflow-flower 5555:5555 --namespace airflow
