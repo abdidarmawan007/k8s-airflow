@@ -72,8 +72,9 @@ docker push asia.gcr.io/zeus-cloud/zeus-airflow:0.6
 ```
 
 #### Update airflow with new docker image and dag
+- `--atomic = if set, upgrade process rolls back changes made in case of failed upgrade`
 ```
-helm upgrade --install airflow apache-airflow/airflow --namespace airflow \
+helm upgrade --install --atomic airflow apache-airflow/airflow --namespace airflow \
 --set airflowVersion=2.0.2 \
 --set executor=CeleryExecutor \
 --set defaultAirflowTag=2.0.2 \
@@ -93,6 +94,15 @@ helm upgrade --install airflow apache-airflow/airflow --namespace airflow \
 --set images.airflow.repository=asia.gcr.io/zeus-cloud/zeus-airflow \
 --set images.airflow.tag=0.6 \
 --set images.airflow.pullPolicy=Always
+```
+
+
+### Check REVISION	UPDATED
+```
+helm history airflow --namespace airflow
+REVISION	UPDATED                 	STATUS    	CHART        	APP VERSION	DESCRIPTION     
+1       	Fri Jun 11 11:58:19 2021	superseded	airflow-1.0.0	2.0.2      	Install complete
+2       	Fri Jun 11 12:05:28 2021	deployed  	airflow-1.0.0	2.0.2      	Upgrade complete
 ```
 
 ### You can get Fernet Key value by running the following:
