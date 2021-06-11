@@ -74,6 +74,7 @@ docker push asia.gcr.io/zeus-cloud/zeus-airflow:0.6
 #### Update airflow with new docker image and dag with auto rollback
 - `--atomic = if set, upgrade process rolls back changes made in case of failed upgrade`
 - `--timeout = deployment timeout if more than 180s`
+- `images.airflow.tag=0.6 (docker tag)`
 ```
 helm upgrade --install --atomic --timeout 180s airflow apache-airflow/airflow --namespace airflow \
 --set airflowVersion=2.0.2 \
