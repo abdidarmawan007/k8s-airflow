@@ -96,7 +96,11 @@ helm upgrade --install --atomic --timeout 120s airflow apache-airflow/airflow --
 --set images.airflow.tag=0.6 \
 --set images.airflow.pullPolicy=Always
 ```
-
+##### Sometime if deployment error and helm auto rollback and pods worker still ImagePullBackOff
+```
+kubectl delete pods -n airflow airflow-worker-0
+pod "airflow-worker-0" deleted
+```
 
 #### Manual Rollback
 ```
@@ -106,7 +110,7 @@ REVISION	UPDATED                 	STATUS          	CHART        	APP VERSION	DES
 2       	Fri Jun 11 12:05:28 2021	superseded      	airflow-1.0.0	2.0.2      	Upgrade complete                                             
 3       	Fri Jun 11 12:09:09 2021	pending-upgrade 	airflow-1.0.0	2.0.2      	Preparing upgrade                                            
 4       	Fri Jun 11 12:15:30 2021	deployed        	airflow-1.0.0	2.0.2      	Rollback to 2                                                
-5       	Fri Jun 11 12:22:32 2021	failed          	airflow-1.0.0	2.0.2      	Upgrade "airflow" failed: timed out waiting for the condition
+5       	Fri Jun 11 12:22:32 2021	failed          	airflow-1.0.0	2.0.2      	Upgrade "airflow" failed: timed out
 
 
 helm rollback airflow 4 --namespace airflow
