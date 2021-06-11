@@ -93,7 +93,11 @@ helm upgrade --install airflow apache-airflow/airflow --namespace airflow \
 --set images.airflow.pullPolicy=Always
 ```
 
-
+### You can get Fernet Key value by running the following:
+```
+echo Fernet Key: $(kubectl get secret --namespace airflow airflow-fernet-key -o jsonpath="{.data.fernet-key}" | base64 --decode)
+```
+ 
 ### Uninstall airflow
 ```
 helm delete airflow --namespace airflow
