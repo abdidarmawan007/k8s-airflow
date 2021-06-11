@@ -23,7 +23,7 @@ kubectl create namespace airflow
 #### Airflow 2.0 allows users to run multiple schedulers. This feature is only recommended for PostgreSQL
 - `executor = Airflow executor`
 - `flower.enabled = Enable Flower (web based tool for monitoring and administrating Celery)`
-- `workers.terminationGracePeriodSeconds = Grace period for tasks to finish after SIGTERM is sent from Kubernetes.`
+- `webserver.service.type= you can change from ClusterIP to LoadBalancer`
 ```
 helm install airflow apache-airflow/airflow --namespace airflow \
 --set airflowVersion=2.0.2 \
@@ -31,6 +31,7 @@ helm install airflow apache-airflow/airflow --namespace airflow \
 --set defaultAirflowTag=2.0.2 \
 --set redis.enabled=True \
 --set flower.enabled=True \
+--set webserver.service.type=ClusterIP \
 --set webserver.replicas=2 \
 --set scheduler.replicas=2 \
 --set pgbouncer.enabled=True \
@@ -78,6 +79,7 @@ helm upgrade --install airflow apache-airflow/airflow --namespace airflow \
 --set defaultAirflowTag=2.0.2 \
 --set redis.enabled=True \
 --set flower.enabled=True \
+--set webserver.service.type=ClusterIP \
 --set webserver.replicas=2 \
 --set scheduler.replicas=2 \
 --set pgbouncer.enabled=True \
