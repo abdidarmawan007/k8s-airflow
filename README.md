@@ -29,6 +29,7 @@ helm install airflow apache-airflow/airflow --namespace airflow \
 --set airflowVersion=2.0.2 \
 --set executor=CeleryExecutor \
 --set defaultAirflowTag=2.0.2 \
+--set redis.enabled=True \
 --set flower.enabled=True \
 --set webserver.replicas=2 \
 --set scheduler.replicas=2 \
@@ -75,6 +76,7 @@ helm upgrade --install airflow apache-airflow/airflow --namespace airflow \
 --set airflowVersion=2.0.2 \
 --set executor=CeleryExecutor \
 --set defaultAirflowTag=2.0.2 \
+--set redis.enabled=True \
 --set flower.enabled=True \
 --set webserver.replicas=2 \
 --set scheduler.replicas=2 \
