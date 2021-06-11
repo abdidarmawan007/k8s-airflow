@@ -42,7 +42,7 @@ helm install airflow apache-airflow/airflow --namespace airflow \
 --set workers.persistence.size=80Gi
 ```
 
-### Login airflow ui and flower ui
+### Login to UI airflow andflower
 ```
 kubectl port-forward svc/airflow-webserver 8080:8080 --namespace airflow
 kubectl port-forward svc/airflow-flower 5555:5555 --namespace airflow
@@ -69,7 +69,7 @@ docker tag zeus-airflow asia.gcr.io/zeus-cloud/zeus-airflow:0.6
 docker push asia.gcr.io/zeus-cloud/zeus-airflow:0.6
 ```
 
-#### Update airflow with new docker image and dags
+#### Update airflow with new docker image and dag
 ```
 helm upgrade --install airflow apache-airflow/airflow --namespace airflow \
 --set airflowVersion=2.0.2 \
