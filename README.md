@@ -71,7 +71,7 @@ docker tag zeus-airflow asia.gcr.io/zeus-cloud/zeus-airflow:0.6
 docker push asia.gcr.io/zeus-cloud/zeus-airflow:0.6
 ```
 
-#### Update airflow with new docker image and dag with auto rollback
+#### Update airflow with new docker image and dag + auto rollback
 - `--atomic = if set, upgrade process rolls back changes made in case of failed upgrade`
 - `--timeout = deployment timeout if more than 180s`
 - `images.airflow.tag=0.6 (docker tag)`
@@ -97,11 +97,6 @@ helm upgrade --install --atomic --timeout 180s airflow apache-airflow/airflow --
 --set images.airflow.tag=0.6 \
 --set images.airflow.pullPolicy=Always
 ```
-##### Sometime if deployment error and helm auto rollback and pods worker still ImagePullBackOff
-```
-kubectl delete pods -n airflow airflow-worker-0
-pod "airflow-worker-0" deleted
-```
 
 #### Manual Rollback
 ```
@@ -121,6 +116,12 @@ Rollback was a success! Happy Helming!
 ### You can get Fernet Key value by running the following:
 ```
 echo Fernet Key: $(kubectl get secret --namespace airflow airflow-fernet-key -o jsonpath="{.data.fernet-key}" | base64 --decode)
+```
+ 
+##### Sometime if deployment error and helm auto rollback and pods worker still ImagePullBackOff
+```
+kubectl delete pods -n airflow airflow-worker-0
+pod "airflow-worker-0" deleted
 ```
  
 ### Uninstall airflow
