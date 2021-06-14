@@ -13,6 +13,10 @@ helm search repo airflow
 NAME                  	CHART VERSION	APP VERSION	DESCRIPTION                                       
 apache-airflow/airflow	1.0.0        	2.0.2      	Helm chart to deploy Apache Airflow, a platform...
 ```
+#### If you need get new value
+```
+helm show values apache-airflow/airflow > values.yaml
+```
 
 ## Create namespace
 ```
@@ -25,7 +29,7 @@ kubectl create namespace airflow
 - `flower.enabled = Enable Flower (web based tool for monitoring and administrating Celery)`
 - `webserver.service.type= you can change from ClusterIP to LoadBalancer`
 ```
-helm install airflow apache-airflow/airflow --namespace airflow \
+helm install airflow apache-airflow/airflow --namespace airflow -f values.yaml \
 --set airflowVersion=2.0.2 \
 --set executor=CeleryExecutor \
 --set defaultAirflowTag=2.0.2 \
@@ -73,11 +77,11 @@ docker push asia.gcr.io/zeus-cloud/zeus-airflow:0.6
 
 #### Update airflow with new docker image and dag + auto rollback
 - `--atomic = if set, upgrade process rolls back changes made in case of failed upgrade`
-- `--timeout = deployment timeout if more than 180s`
+- `--timeout = deployment timeout if more than 360s`
 - `workers.replicas= number pods worker for scale out running jobs
 - `images.airflow.tag=0.6 (docker tag)`
 ```
-helm upgrade --install --atomic --timeout 360s airflow apache-airflow/airflow --namespace airflow \
+helm upgrade --install --atomic --timeout 360s airflow apache-airflow/airflow --namespace airflow -f values.yaml \
 --set airflowVersion=2.0.2 \
 --set executor=CeleryExecutor \
 --set defaultAirflowTag=2.0.2 \
