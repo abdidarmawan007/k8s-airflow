@@ -71,7 +71,7 @@ docker tag zeus-airflow asia.gcr.io/zeus-cloud/zeus-airflow:0.6
 docker push asia.gcr.io/zeus-cloud/zeus-airflow:0.6
 ```
 
-#### Update airflow with new docker image and dag + auto rollback
+### Update airflow with new docker image and dag + auto rollback
 - `--atomic = if set, upgrade process rolls back changes made in case of failed upgrade`
 - `--timeout = deployment timeout if more than 180s`
 - `workers.replicas= number pods worker for scale out running jobs
