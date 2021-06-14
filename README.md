@@ -1,6 +1,6 @@
 ## Install Official Airflow chart using helm 3 "Google Kubernetes Engine"
 
-### Add repo airflow
+## Add repo airflow
 ```
 helm repo add apache-airflow https://airflow.apache.org
 helm repo update
@@ -14,12 +14,12 @@ NAME                  	CHART VERSION	APP VERSION	DESCRIPTION
 apache-airflow/airflow	1.0.0        	2.0.2      	Helm chart to deploy Apache Airflow, a platform...
 ```
 
-### Create namespace
+## Create namespace
 ```
 kubectl create namespace airflow
 ```
 
-### Install airflow
+## Install airflow
 #### Airflow 2.0 allows users to run multiple schedulers. This feature is only recommended for PostgreSQL
 - `executor = Airflow executor`
 - `flower.enabled = Enable Flower (web based tool for monitoring and administrating Celery)`
@@ -44,13 +44,13 @@ helm install airflow apache-airflow/airflow --namespace airflow \
 --set workers.persistence.size=80Gi
 ```
 
-### Login to UI airflow and flower (if you use ClusterIP via port-forward) user: admin pass:admin
+## Login to UI airflow and flower (if you use ClusterIP via port-forward) user: admin pass:admin
 ```
 kubectl port-forward svc/airflow-webserver 8080:8080 --namespace airflow
 kubectl port-forward svc/airflow-flower 5555:5555 --namespace airflow
 ```
 
-### Dockerfile and DAGS structure
+## Dockerfile and DAGS structure
 ```
 .
 ├── dags
@@ -63,7 +63,7 @@ kubectl port-forward svc/airflow-flower 5555:5555 --namespace airflow
 
 
 
-### Deploy new DAG
+## Deploy new DAG
 #### Build docker image
 ```
 docker build --no-cache -t zeus-airflow .
@@ -71,7 +71,7 @@ docker tag zeus-airflow asia.gcr.io/zeus-cloud/zeus-airflow:0.6
 docker push asia.gcr.io/zeus-cloud/zeus-airflow:0.6
 ```
 
-### Update airflow with new docker image and dag + auto rollback
+#### Update airflow with new docker image and dag + auto rollback
 - `--atomic = if set, upgrade process rolls back changes made in case of failed upgrade`
 - `--timeout = deployment timeout if more than 180s`
 - `workers.replicas= number pods worker for scale out running jobs
@@ -99,7 +99,7 @@ helm upgrade --install --atomic --timeout 180s airflow apache-airflow/airflow --
 --set images.airflow.pullPolicy=Always
 ```
 
-#### Manual Rollback
+## Manual Rollback
 ```
 helm history airflow --namespace airflow
 REVISION	UPDATED                 	STATUS          	CHART        	APP VERSION	DESCRIPTION                                                  
@@ -114,7 +114,7 @@ helm rollback airflow 4 --namespace airflow
 Rollback was a success! Happy Helming!
 ```
 
-### You can get Fernet Key value by running the following:
+## You can get Fernet Key value by running the following:
 ```
 echo Fernet Key: $(kubectl get secret --namespace airflow airflow-fernet-key -o jsonpath="{.data.fernet-key}" | base64 --decode)
 ```
