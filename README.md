@@ -77,7 +77,7 @@ docker push asia.gcr.io/zeus-cloud/zeus-airflow:0.6
 - `workers.replicas= number pods worker for scale out running jobs
 - `images.airflow.tag=0.6 (docker tag)`
 ```
-helm upgrade --install --atomic --timeout 180s airflow apache-airflow/airflow --namespace airflow \
+helm upgrade --install --atomic --timeout 360s airflow apache-airflow/airflow --namespace airflow \
 --set airflowVersion=2.0.2 \
 --set executor=CeleryExecutor \
 --set defaultAirflowTag=2.0.2 \
