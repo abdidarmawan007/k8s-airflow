@@ -129,7 +129,12 @@ echo Fernet Key: $(kubectl get secret --namespace airflow airflow-fernet-key -o 
 kubectl delete pods -n airflow airflow-worker-0
 pod "airflow-worker-0" deleted
 ```
- 
+
+### Change timezone edit configmap with name "airflow-airflow-config"
+![alt text](https://i.imgur.com/Xjf1aoU.png)
+
+![alt text](https://i.imgur.com/03HbSHJ.png)
+
 ### Uninstall airflow
 ```
 helm delete airflow --namespace airflow
