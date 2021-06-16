@@ -32,8 +32,8 @@ kubectl create namespace airflow
 ```
 helm install airflow apache-airflow/airflow --namespace airflow -f values.yaml \
 --set airflowVersion=2.0.2 \
---set executor=CeleryExecutor \
 --set defaultAirflowTag=2.0.2 \
+--set executor=CeleryExecutor \
 --set redis.enabled=True \
 --set flower.enabled=True \
 --set webserver.service.type=ClusterIP \
@@ -84,8 +84,8 @@ docker push asia.gcr.io/zeus-cloud/zeus-airflow:0.6
 ```
 helm upgrade --install --atomic --timeout 360s airflow apache-airflow/airflow --namespace airflow -f values.yaml \
 --set airflowVersion=2.0.2 \
---set executor=CeleryExecutor \
 --set defaultAirflowTag=2.0.2 \
+--set executor=CeleryExecutor \
 --set redis.enabled=True \
 --set flower.enabled=True \
 --set webserver.service.type=ClusterIP \
