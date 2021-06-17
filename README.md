@@ -140,6 +140,18 @@ kubectl delete pods -n airflow airflow-worker-0
 pod "airflow-worker-0" deleted
 ```
 
+### Change Worker cpu and memory, edit values.yaml edit in line 178 in resources: {} (remove {})
+```
+  resources:
+    limits:
+     cpu: 1000m
+     memory: 1200Mi
+    requests:
+     cpu: 500m
+     memory: 600Mi
+```
+
+
 #### Example useful airflow helm and cli
 ```
 airflow config list
