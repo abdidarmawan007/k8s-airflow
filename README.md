@@ -76,6 +76,11 @@ docker tag zeus-airflow asia.gcr.io/zeus-cloud/zeus-airflow:0.6
 docker push asia.gcr.io/zeus-cloud/zeus-airflow:0.6
 ```
 
+#### Apply configmap variables
+```
+kubectl apply -f variables.yaml
+```
+
 #### Update airflow with new docker image and dag + auto rollback
 - `--atomic = if set, upgrade process rolls back changes made in case of failed upgrade`
 - `--timeout = deployment timeout if more than 360s`
