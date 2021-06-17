@@ -23,6 +23,11 @@ helm show values apache-airflow/airflow > values.yaml
 kubectl create namespace airflow
 ```
 
+#### Apply configmap variables
+```
+kubectl apply -f variables.yaml
+```
+
 ## Install airflow
 #### Airflow 2.0 allows users to run multiple schedulers. This feature is only recommended for PostgreSQL
 - `values.yaml will replaced by --set config`
