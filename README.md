@@ -84,7 +84,7 @@ kubectl apply -f variables.yaml
 #### Update airflow with new docker image and dag + auto rollback
 - `--atomic = if set, upgrade process rolls back changes made in case of failed upgrade`
 - `--timeout = deployment timeout if more than 360s`
-- `workers.replicas= number pods worker for scale out running jobs
+- `workers.replicas= number pods worker for scale out running jobs`
 - `images.airflow.tag=0.6 (docker tag)`
 ```
 helm upgrade --install --atomic --timeout 360s airflow apache-airflow/airflow --namespace airflow -f values.yaml \
