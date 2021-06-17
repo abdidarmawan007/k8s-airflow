@@ -145,11 +145,11 @@ pod "airflow-worker-0" deleted
 ```
   resources:
     limits:
-     cpu: 1000m
-     memory: 1200Mi
+     cpu: 1600m
+     memory: 1800Mi
     requests:
-     cpu: 500m
-     memory: 600Mi
+     cpu: 1200m
+     memory: 1400Mi
 ```
 ```
   nodeSelector:
