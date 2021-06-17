@@ -135,9 +135,10 @@ kubectl delete pods -n airflow airflow-worker-0
 pod "airflow-worker-0" deleted
 ```
 
-#### Example useful airflow cli
+#### Example useful airflow helm and cli
 ```
 airflow config list
+helm ls -n airflow
 ```
 
 ### Uninstall airflow
