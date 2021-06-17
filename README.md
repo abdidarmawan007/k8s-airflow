@@ -130,7 +130,7 @@ kubectl delete pods -n airflow airflow-worker-0
 pod "airflow-worker-0" deleted
 ```
 
-#### example useful airflow cli
+#### Example useful airflow cli
 ```
 airflow config list
 ```
