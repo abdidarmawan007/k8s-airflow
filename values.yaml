@@ -182,7 +182,8 @@ secret: []
 #   secretKey: ""
 
 # Extra secrets that will be managed by the chart
-# (You can use them with extraEnv or extraEnvFrom or some of the extraVolumes values).
+# (You can use them with extraEnv or 
+or some of the extraVolumes values).
 # The format is "key/value" where
 #    * key (can be templated) is the name of the secret that will be created
 #    * value: an object with the standard 'data' or 'stringData' key (or both).
@@ -224,14 +225,10 @@ extraEnv: ~
 #     value: 'True'
 
 # Extra envFrom 'items' that will be added to the definition of airflow containers
-# A string is expected (can be templated).
-extraEnvFrom: ~
-# eg:
-# extraEnvFrom: |
-#   - secretRef:
-#       name: '{{ .Release.Name }}-airflow-connections'
-#   - configMapRef:
-#       name: '{{ .Release.Name }}-airflow-variables'
+# Ini configmap yang di pakai sama variables.yaml bro
+extraEnvFrom: |
+ - configMapRef:
+    name: 'airflow-variables'
 
 # Airflow database & redis config
 data:
