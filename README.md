@@ -150,6 +150,12 @@ pod "airflow-worker-0" deleted
      cpu: 500m
      memory: 600Mi
 ```
+```
+  nodeSelector:
+    cloud.google.com/gke-nodepool: pool-airflow
+  affinity: {}
+  tolerations: []
+```  
 
 
 #### Example useful airflow helm and cli
