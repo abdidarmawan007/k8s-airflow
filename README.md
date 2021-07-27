@@ -34,6 +34,7 @@ kubectl apply -f variables.yaml
 - `executor = Airflow executor`
 - `flower.enabled = Enable Flower (web based tool for monitoring and administrating Celery)`
 - `webserver.service.type= you can change from ClusterIP to LoadBalancer`
+-  `--version=1.0.0 = prevent updated helm repo versions and make errors`
 ```
 helm install airflow apache-airflow/airflow --namespace airflow -f values.yaml --version=1.0.0 \
 --set airflowVersion=2.0.2 \
