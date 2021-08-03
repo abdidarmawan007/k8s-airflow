@@ -93,7 +93,7 @@ kubectl apply -f variables.yaml
 - `workers.replicas= number pods worker for scale out running jobs`
 - `images.airflow.tag=0.6 (docker tag)`
 ```
-helm upgrade --install --atomic --timeout 360s airflow apache-airflow/airflow --namespace airflow -f values.yaml \
+helm upgrade --install --atomic --timeout 360s airflow apache-airflow/airflow --namespace airflow -f values.yaml --version=1.0.0 \
 --set airflowVersion=2.0.2 \
 --set defaultAirflowTag=2.0.2 \
 --set executor=CeleryExecutor \
