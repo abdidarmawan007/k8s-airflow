@@ -70,6 +70,9 @@ kubectl port-forward svc/airflow-flower 5555:5555 --namespace airflow
 │   └── generated
 │       └── example-generated.py
 └── Dockerfile
+    requirements.txt
+    values.yaml
+    variables.yaml
 ```
 
 
