@@ -109,10 +109,9 @@ helm upgrade --install --atomic --timeout 360s airflow apache-airflow/airflow --
 --set pgbouncer.maxClientConn=150 \
 --set pgbouncer.metadataPoolSize=10 \
 --set pgbouncer.resultBackendPoolSize=5 \
---set workers.replicas=5 \
+--set workers.replicas=4 \
 --set workers.persistence.enabled=True \
---set workers.terminationGracePeriodSeconds=600 \
---set workers.persistence.size=80Gi \
+--set workers.persistence.size=10Gi \
 --set images.airflow.repository=asia.gcr.io/zeus-cloud/zeus-airflow \
 --set images.airflow.tag=0.6 \
 --set images.airflow.pullPolicy=Always
