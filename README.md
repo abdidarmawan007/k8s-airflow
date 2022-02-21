@@ -175,6 +175,7 @@ helm delete airflow --namespace airflow
 
 #### Reference
 ```
+https://eatcodeplay.com/a-simple-dag-to-quickly-purge-old-airflow-logs-274ed5de1567 (delete logs with dag)
 https://airflow.apache.org/docs/helm-chart/stable/parameters-ref.html
 https://airflow.apache.org/docs/helm-chart/stable/index.html
 ```
