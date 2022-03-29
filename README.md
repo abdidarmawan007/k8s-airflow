@@ -144,7 +144,7 @@ pod "airflow-worker-0" deleted
 ```
 
 #### Change Worker cpu and memory or nodepool 
-#### Edit values.yaml 
+#### Edit values.yaml and change all nodeSelector
 ```
   resources:
     limits:
@@ -155,7 +155,6 @@ pod "airflow-worker-0" deleted
      memory: 1400Mi
 ```
 ```
-# Select certain nodes for airflow worker pods.
   nodeSelector:
     cloud.google.com/gke-nodepool: pool-airflow
   affinity: {}
