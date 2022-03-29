@@ -15,7 +15,7 @@ apache-airflow/airflow	1.0.0        	2.0.2      	Helm chart to deploy Apache Air
 ```
 #### If you need get new value
 ```
-helm show values apache-airflow/airflow > values.yaml
+helm show values apache-airflow/airflow --version=1.0.0 > values.yaml
 ```
 
 ## Create namespace
