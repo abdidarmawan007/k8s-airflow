@@ -155,6 +155,7 @@ pod "airflow-worker-0" deleted
      memory: 1400Mi
 ```
 ```
+# Select certain nodes for airflow worker pods.
   nodeSelector:
     cloud.google.com/gke-nodepool: pool-airflow
   affinity: {}
