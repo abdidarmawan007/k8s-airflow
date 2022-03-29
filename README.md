@@ -9,7 +9,7 @@ helm repo list
 NAME          	URL                       
 apache-airflow	https://airflow.apache.org
 
-helm search repo airflow
+helm search repo airflow --versions
 NAME                  	CHART VERSION	APP VERSION	DESCRIPTION                                       
 apache-airflow/airflow	1.0.0        	2.0.2      	Helm chart to deploy Apache Airflow, a platform...
 ```
