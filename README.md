@@ -114,7 +114,7 @@ helm upgrade --install --atomic --timeout 360s airflow apache-airflow/airflow --
 --set workers.persistence.size=10Gi \
 --set images.airflow.repository=asia.gcr.io/zeus-cloud/zeus-airflow \
 --set images.airflow.tag=0.6 \
---set images.airflow.pullPolicy=Always
+--set images.airflow.pullPolicy=IfNotPresent
 ```
 
 ## Manual Rollback
