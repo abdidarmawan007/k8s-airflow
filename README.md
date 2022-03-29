@@ -52,7 +52,7 @@ helm install airflow apache-airflow/airflow --namespace airflow -f values.yaml -
 --set workers.replicas=5 \
 --set workers.persistence.enabled=True \
 --set workers.terminationGracePeriodSeconds=600 \
---set workers.persistence.size=80Gi
+--set workers.persistence.size=10Gi
 ```
 
 ## Login to UI airflow and flower (if you use ClusterIP via port-forward) user: admin pass:admin
